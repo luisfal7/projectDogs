@@ -26,6 +26,7 @@ server.use('/', routes);
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+  //var err = new Error('No se pudo analizar la entrada')
   const status = err.status || 500;
   const message = err.message || err;
   console.error(err);
