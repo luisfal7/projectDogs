@@ -33,15 +33,14 @@ router.get('/dogs', async function(req,res,next){
         if(name === undefined || name === null){
             res.status(200).json(allBreeds)
         }else{
-            let upperCaseName = name.charAt(0).toUpperCase() + name.slice(1)
-            let filterBreeds = allBreeds.filter(e => 
-                    e.name?.includes(upperCaseName) ||
-                    e.temperament?.includes(upperCaseName) ||
-                    e.weight?.imperial.includes(upperCaseName) ||
-                    e.weight?.metric.includes(upperCaseName) ||
-                    e.weightMin?.toString().includes(upperCaseName) ||
-                    e.weightMax?.toString().includes(upperCaseName) ||
-                    e.temperaments?.some(e => e.name.includes(upperCaseName)) === true
+            let filterBreeds = allBreeds?.filter(e => 
+                    e.name?.toLowerCase().includes(name.toLowerCase()) ||
+                    e.temperament?.toLowerCase().includes(name.toLowerCase()) ||
+                    e.weight?.imperial.includes(name.toLowerCase()) ||
+                    e.weight?.metric.includes(name.toLowerCase()) ||
+                    e.weightMin?.toString().includes(name.toLowerCase()) ||
+                    e.weightMax?.toString().includes(name.toLowerCase()) ||
+                    e.temperaments?.some(e => e.name.toLowerCase().includes(name.toLowerCase())) === true
                 )
             if(filterBreeds.length !== 0){
                 res.status(200).json(filterBreeds)
