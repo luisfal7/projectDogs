@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    *background-color: aqua;
+    
+}
+.nav{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 13%;
+    background: #092327;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.logo{
+    cursor: pointer;
+    width: 60px;
+}
+
+.logo:hover{
+    transform: translateY(-1px);
+}
+
+.form{
+    display:flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 400px;
+    background-color: white; 
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1.5px solid #d0d0d0;
+    box-shadow: 0 2px 2px rgba(0,0,0,10);
+    font-size: 12px;
+    
+}
+
+.input{
+    *outline: none;
+    padding: 5px;
+    border-color: #d0d0d0;
+    border-radius: 4px;
+    margin: 5px;
+    width: 250px;
+}
+
+.inputSelect{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    border-color: #d0d0d0;
+    border-radius: 4px;
+    margin: 5px;
+    width: 140px;
+    color: #7c7777;
+}
+.span{
+    color: #7c7777;
+    
+}
+
+.validateTrue{
+    color: #7c7777;
+    font-size: 9px;
+}
+.validateFalse{
+    color: #ff0606;
+    font-size: 9px;
+
+}
+
+.TempsSelect{
+    color: #7c7777;
+    font-size: 9px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3px;
+    width: 250px;
+    height: 50px;
+    border:1px solid #d0d0d0;
+    overflow-wrap: break-word;
+    border-radius: 4px;
+}
+
+.btn{
+    margin: 20px;
+    padding: 10px 100px;
+    color: #fff;
+    background: #092327;
+}
+
+.btn:hover{
+    background: #ef8354;
+}
