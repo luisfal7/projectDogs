@@ -6,7 +6,6 @@ const {conn, Temperament, Dog} = require('../db.js')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
-
 const router = express.Router();
 
 // Configurar los routers
@@ -19,7 +18,7 @@ router.get('/dogs', async function(req,res,next){
     try{
         const selectDog = await Dog.findAll({
             attributes: {
-                exclude: ['id', 'heightMin', 'heightMax', 'lifeSpan']
+                exclude: [] //'heightMin', 'heightMax', 'lifeSpan'
             },
             include: {
             model: Temperament,
@@ -36,11 +35,8 @@ router.get('/dogs', async function(req,res,next){
             let filterBreeds = allBreeds?.filter(e => 
                     e.name?.toLowerCase().includes(name.toLowerCase()) ||
                     e.temperament?.toLowerCase().includes(name.toLowerCase()) ||
-                    e.weight?.imperial.includes(name.toLowerCase()) ||
-                    e.weight?.metric.includes(name.toLowerCase()) ||
-                    e.weightMin?.toString().includes(name.toLowerCase()) ||
-                    e.weightMax?.toString().includes(name.toLowerCase()) ||
-                    e.temperaments?.some(e => e.name.toLowerCase().includes(name.toLowerCase())) === true
+                    e.weight?.imperial?.includes(name.toLowerCase()) ||
+                    e.weight?.metric?.includes(name.toLowerCase())
                 )
             if(filterBreeds.length !== 0){
                 res.status(200).json(filterBreeds)
@@ -56,12 +52,13 @@ router.get('/dogs', async function(req,res,next){
     
 })
 
-router.get('/dogs/:idRaza', async (req,res,next)=>{
+router.get('/dogs/:id', async (req,res,next)=>{
 
     try{
-        const {idRaza} = req.params
+        const id = req.params.id
+        console.log(id)
         const breedsApi = await controllers.detailBreed()
-        const breedsDogDB = await Dog.findAll({
+        const breedsDogDB = await Dog.findAll(/* {
             attributes: {
                 exclude: []
             },
@@ -70,18 +67,17 @@ router.get('/dogs/:idRaza', async (req,res,next)=>{
             attributes:{
                 exclude:['id']
             }
-        }})
+        }} */)
         const allBreeds = breedsApi.concat(breedsDogDB)
-        let findBreed = allBreeds.find(e => e.id === parseInt(idRaza))
-        delete findBreed.id
-        delete findBreed.bred_for
-        delete findBreed.breed_group
-        delete findBreed.reference_image_id
-        delete findBreed.country_code
-        delete findBreed.origin
-
-        res.status(200).json(findBreed)
-    }catch(err){
+        let findBreed = allBreeds.find(e => e.id === parseInt(id))
+            delete findBreed.id
+            delete findBreed.bred_for
+            delete findBreed.breed_group
+            delete findBreed.reference_image_id
+            delete findBreed.country_code
+            delete findBreed.origin
+            res.status(200).json(findBreed)
+        }catch(err){
         next(err.message = 'No hay raza con ese ID')
     }
         
@@ -102,7 +98,7 @@ router.get('/temperaments', async (req,res,next)=>{
             const findAllTemperament = await Temperament.findAll({attributes:['id','name']})
             res.status(200).json(findAllTemperament)
         }
-        console.log(tempSelect.length)
+        
     }catch(err){
         next(err)
     }
@@ -113,23 +109,9 @@ router.post('/dogs', async (req,res, next)=>{
 
     // await Dog.destroy();
 
-    const { name, heightMin, heightMax, weightMin, weightMax, nameTempOne, nameTempTwo, nameTempThree, lifeSpan } = req.body
+    const dog= req.body
     try{
-        const createDog = await Dog.create({
-            name,
-            heightMin,
-            heightMax,
-            weightMin,
-            weightMax,
-            lifeSpan,
-            temperaments: [
-                {name: nameTempOne},
-                {name: nameTempTwo},
-                {name: nameTempThree},
-            ]
-        },{
-            include: Temperament
-        })
+        const createDog = await Dog.create(dog)
         res.status(200).json(createDog)
     }catch(err){
         next(err)

@@ -15,21 +15,23 @@ module.exports = sequelize => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    heightMin:{
-      type: DataTypes.INTEGER
+    height:{
+      type: DataTypes.JSONB
     },
-    heightMax:{
-      type: DataTypes.INTEGER
+    weight:{
+      type: DataTypes.JSONB,
+      allowNull: true,
     },
-    weightMin:{
-      type: DataTypes.INTEGER
-    },
-    weightMax:{
-      type: DataTypes.INTEGER
-    },
-    lifeSpan: {
+    life_span: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+    },
+    temperament: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    image: { type: DataTypes.JSONB, 
+      allowNull: true,
     }
   }, {
     timestamps: false
