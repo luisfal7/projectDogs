@@ -25,10 +25,10 @@ function Nav() {
         <div className={moduleNav.container}>
              <a title="Home" href="http://localhost:3000/"><img className={moduleNav.logo} src={logo} alt='' /></a>
             <nav className={moduleNav.nav}>
-                <lu className={moduleNav.lu}>
+                <ul className={moduleNav.lu}>
                     <li><Link className={moduleNav.link} to="/create">Crear raza</Link></li>
                     <li><Link className={moduleNav.link} to="/">Salir</Link></li>
-                </lu>
+                </ul>
             </nav>
             <input className={moduleNav.search} type='search' placeholder='Buscar raza...' onChange={handleChange}/>
         </div>

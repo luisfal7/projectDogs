@@ -31,6 +31,9 @@ function Create() {
 
         lifeSpanMax:'',
         validateLifeSpanMax: null,
+        
+        danger:'',
+        validatDanger: null,
 
         temperaments: [],
         validateTemperaments: null,

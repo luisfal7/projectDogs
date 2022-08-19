@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Card from '../Card/Card'
@@ -9,6 +9,12 @@ function Pages() {
     const dogs = useSelector((state) => state.filter)
 
     const [currentPage, setCurrentPage] = useState(0)
+
+    useEffect(()=>{
+        if(dogs.length){
+            setCurrentPage(0)
+        }
+    },[dogs])
 
     const prevPage = ()=>{
         if(currentPage < 9){

@@ -15,15 +15,16 @@ function Filter() {
     const dispatch = useDispatch();
 
     let temperaments = useSelector((state) => state.temperaments)
-
+    
     const handleChangeSelect = (e)=>{
         if(e.target.value === 'seleccionar temperamento'){
             dispatch(getDogs())
         }else{
             dispatch(getByTemperaments(e.target.value))
+
         } 
     }
-
+    
     useEffect(() => {
         dispatch(getTemperaments())
         dispatch(getDogs());
