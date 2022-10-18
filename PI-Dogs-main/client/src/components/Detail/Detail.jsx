@@ -18,7 +18,7 @@ function Detail(props) {
     return ( 
         <div className={moduleDetail.container}>
             <div className={moduleDetail.nav}>
-            <a title="Home" href="http://localhost:3000/home">
+            <a title="Home" href="/home">
                 <img className={moduleDetail.logo} src={logo} alt=''/>
             </a>
             </div>

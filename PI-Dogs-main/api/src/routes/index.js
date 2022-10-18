@@ -17,7 +17,7 @@ router.get('/dogs', async function(req,res,next){
     
     try{
         const selectDog = await Dog.findAll({
-            attributes: {
+            /* attributes: {
                 exclude: [] //'heightMin', 'heightMax', 'lifeSpan'
             },
             include: {
@@ -25,7 +25,7 @@ router.get('/dogs', async function(req,res,next){
             attributes:{
                 exclude:['id']
             }
-        }})
+        } */})
         const arrayAllBreedsApi = await controllers.getAllBreeds()
         const allBreeds = arrayAllBreedsApi.concat(selectDog)
 
@@ -43,7 +43,7 @@ router.get('/dogs', async function(req,res,next){
             }else{
                 res.status(404).send(`No se encontro raza con la palabra clave ingresada ${name}`)
             }
-            
+
         }
 
     }catch(err){
@@ -107,7 +107,7 @@ router.get('/temperaments', async (req,res,next)=>{
 
 router.post('/dogs', async (req,res, next)=>{
 
-    // await Dog.destroy();
+    //await Dog.destroy();
 
     const dog= req.body
     try{

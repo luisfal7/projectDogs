@@ -23,7 +23,7 @@ function Nav() {
 
     return (
         <div className={moduleNav.container}>
-             <a title="Home" href="http://localhost:3000/"><img className={moduleNav.logo} src={logo} alt='' /></a>
+             <a title="Home" href="/"><img className={moduleNav.logo} src={logo} alt='' /></a>
             <nav className={moduleNav.nav}>
                 <ul className={moduleNav.lu}>
                     <li><Link className={moduleNav.link} to="/create">Crear raza</Link></li>

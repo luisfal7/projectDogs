@@ -160,7 +160,7 @@ function Create() {
     return ( 
         <div className={moduleCreate.container}>
             <div className={moduleCreate.nav}>
-            <a title="Home" href="http://localhost:3000/home">
+            <a title="Home" href="/home">
                 <img className={moduleCreate.logo} src={logo} alt=''/>
             </a>
             </div>
